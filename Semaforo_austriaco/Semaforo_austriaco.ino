@@ -10,6 +10,7 @@
     int durataTotale;
     int durataGiallo;
     int lassotempoVerde;
+    int temporosso;
 
 void richiediDurataVerde ();
         
@@ -22,7 +23,7 @@ void setup() {
     rosso2 = 5;
     giallo2 = 6;
     verde2 = 7;
-
+    
   
     pinMode (rosso1, OUTPUT);
     pinMode (giallo1, OUTPUT);
@@ -32,6 +33,11 @@ void setup() {
     pinMode (verde2, OUTPUT);
 
     richiesta = 0;
+
+    temporosso = durataTotale - durataGiallo;
+    
+    Serial.begin (9600);
+    
 }
    
 void loop() {
@@ -40,11 +46,18 @@ void loop() {
     {
       richiediValori();
     }
+    richiesta = 1;
+
+
+
     
 
-    digitalWrite (rosso1, HIGH);
-    digitalWrite (verde2,HIGH);
+
     
+
+
+  
+        
        
 }
 
@@ -59,7 +72,7 @@ void loop() {
 
   void richiediLampeggiVerde()
   {
-    Serial.print ("Quanti lampeggi verdi?");
+    Serial.println("Quanti lampeggi verdi?");
     while (Serial.available() == 0) {};
     String input = Serial.readString();
     numlampeggi = input.toInt(); 
@@ -67,7 +80,7 @@ void loop() {
 
   void richiediDurataTotale()
   {
-    Serial.print ("Quanto deve durare il semaforo?");
+    Serial.println("Quanto deve durare il semaforo?");
     while (Serial.available() == 0) {};
     String input = Serial.readString();
     durataTotale = input.toInt();
@@ -76,7 +89,7 @@ void loop() {
 
   void richiediDurataGiallo ()
   {
-    Serial.print ("Quanto deve durare il giallo?");
+    Serial.println ("Quanto deve durare il giallo?");
     while (Serial.available() == 0) {};
     String input = Serial.readString();
     durataGiallo = input.toInt();  
@@ -84,7 +97,7 @@ void loop() {
   
   void richiediDurataVerde ()
   {
-    Serial.print ("Quanto lasso di tempo vuoi che ci sia da un lampeggio all'altro?");
+    Serial.println("Quanto lasso di tempo vuoi che ci sia da un lampeggio all'altro?");
     while (Serial.available() == 0) {};
     String input = Serial.readString();
     lassotempoVerde = input.toInt();
