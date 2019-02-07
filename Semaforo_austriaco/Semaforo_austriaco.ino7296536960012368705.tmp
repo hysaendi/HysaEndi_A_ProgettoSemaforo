@@ -62,34 +62,8 @@ void loop() {
     digitalWrite (giallo1,HIGH);
     digitalWrite (giallo2,HIGH);
     delay (durataGiallo);
-    digitalWrite (giallo1,LOW);
-    digitalWrite (giallo2,LOW);
-    digitalWrite (rosso1,LOW);
-
-
-    //fase in cui il verde rimane illuminato con un delay calcolato
-    digitalWrite (rosso2,HIGH);
-    digitalWrite (verde1,HIGH);
-    delay (durataVerde);
-    digitalWrite (verde1,LOW);
-    delay (0);
-    lampeggiaVerde();
-    delay (0);
-    digitalWrite (rosso2,LOW);
-    delay (0);
-    digitalWrite (rosso2,LOW),
-    delay (0);
-
-
-
-    //giallo rimane accesso per poi ricominciare il ciclo
-    digitalWrite (giallo1,HIGH);
-    digitalWrite (rosso2,HIGH);
-    digitalWrite (giallo2,HIGH);
-    delay (durataGiallo);
-    digitalWrite (giallo1,LOW);
-    digitalWrite (giallo2,LOW);
-    delay (0);
+    digitalWrite (giallo1,LOW;
+   
   
 
   
