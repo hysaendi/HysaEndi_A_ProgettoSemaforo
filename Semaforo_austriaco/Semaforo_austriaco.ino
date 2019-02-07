@@ -9,8 +9,9 @@
     int richiesta;
     int durataTotale;
     int durataGiallo;
+    int durataVerde;
     int lassotempoVerde;
-    int temporosso;
+    int durataRosso;
 
 void richiediDurataVerde ();
         
@@ -34,7 +35,6 @@ void setup() {
 
     richiesta = 0;
 
-    temporosso = durataTotale - durataGiallo;
     
     Serial.begin (9600);
     
@@ -48,8 +48,8 @@ void loop() {
     }
     richiesta = 1;
 
-
-
+    int durataRosso = durataTotale - durataGiallo;
+    int durataVerde = durataRosso - numlampeggi * lassotempoVerde *2;
     
 
 
@@ -115,7 +115,3 @@ void loop() {
       delay (ritardo);
     }
   }
-
-
-
-
