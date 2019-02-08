@@ -59,10 +59,10 @@ void loop() {
     lampeggiaVerde();
 
     //fase in cui rosso e giallo restano accesi
-    digitalWrite (giallo1,HIGH);
+    digitalWrite (giallo1,HIGH);                            
     digitalWrite (giallo2,HIGH);
-    delay (durataGiallo);
-    digitalWrite (giallo1,LOW);
+    delay (durataGiallo);                                               //creazione metodo void rossoEgialloAccesi () con all'interno le righe di codice                                                                           
+    digitalWrite (giallo1,LOW);                                             
     digitalWrite (giallo2,LOW);
     digitalWrite (rosso1,LOW);
 
@@ -72,7 +72,7 @@ void loop() {
     digitalWrite (verde1,HIGH);
     delay (durataVerde);
     digitalWrite (verde1,LOW);
-    delay (0);
+    delay (0);                                                //metodo void  VerdeAcceso () {}
     lampeggiaVerde();
     delay (0);
     digitalWrite (rosso2,LOW);
@@ -86,7 +86,7 @@ void loop() {
     digitalWrite (giallo1,HIGH);
     digitalWrite (rosso2,HIGH);
     digitalWrite (giallo2,HIGH);
-    delay (durataGiallo);
+    delay (durataGiallo);                                         //metodo void gialloAcceso () {}
     digitalWrite (giallo1,LOW);
     digitalWrite (giallo2,LOW);
     delay (0);
