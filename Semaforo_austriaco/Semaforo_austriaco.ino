@@ -13,7 +13,6 @@
     int lassotempoVerde;
     int durataRosso;
 
-void richiediDurataVerde ();
         
 void setup() {
   // put your setup code here, to run once:
