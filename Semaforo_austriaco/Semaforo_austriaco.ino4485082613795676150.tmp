@@ -46,23 +46,45 @@ void loop() {
     {
       richiediValori();
     }
-    richiesta = 1;     //impongo richiesta = 1 cosi  le domande verranno effettuate una sola volta
+    richiesta = 1;
 
     int durataRosso = durataTotale - durataGiallo;
     int durataVerde = durataRosso - numlampeggi * lassotempoVerde *2;
     
 
    //inizializzazione semaforo
-    digitalWrite (rosso1,HIGH);
-    digitalWrite (verde2,HIGH);
-    delay (durataVerde);
+   digitalWrite (rosso1,HIGH);
+   digitalWrite (verde2,HIGH);
+   delay (durataVerde);
     lampeggiaVerde();
+
     //fase in cui rosso e giallo restano accesi
     rossoEgialloAccesi();
+
+
     //fase in cui il verde rimane illuminato con un delay calcolato
-    verdeAcceso();
+    digitalWrite (rosso2,HIGH);
+    digitalWrite (verde1,HIGH);
+    delay (durataVerde);
+    digitalWrite (verde1,LOW);
+    delay (0);                                                //metodo void  VerdeAcceso () {}
+    lampeggiaVerde();
+    delay (0);
+    digitalWrite (rosso2,LOW);
+    delay (0);
+    digitalWrite (rosso2,LOW),
+    delay (0);
+
+
+
     //giallo rimane accesso per poi ricominciare il ciclo
-    gialloAcceso();
+    digitalWrite (giallo1,HIGH);
+    digitalWrite (rosso2,HIGH);
+    digitalWrite (giallo2,HIGH);
+    delay (durataGiallo);                                         //metodo void gialloAcceso () {}
+    digitalWrite (giallo1,LOW);
+    digitalWrite (giallo2,LOW);
+    delay (0);
   
 
   
@@ -135,35 +157,6 @@ void loop() {
     digitalWrite (giallo2,LOW);
     digitalWrite (rosso1,LOW);
       
-    }
-
-
-    void verdeAcceso()
-    {
-    digitalWrite (rosso2,HIGH);
-    digitalWrite (verde1,HIGH);
-    delay (durataVerde);
-    digitalWrite (verde1,LOW);
-    delay (0);                                                //metodo void  VerdeAcceso () {}
-    lampeggiaVerde();
-    delay (0);
-    digitalWrite (rosso2,LOW);
-    delay (0);
-    digitalWrite (rosso2,LOW),
-    delay (0);
-      
-    }
-
-
-    void gialloAcceso()
-    {
-    digitalWrite (giallo1,HIGH);
-    digitalWrite (rosso2,HIGH);
-    digitalWrite (giallo2,HIGH);
-    delay (durataGiallo);                                         //metodo void gialloAcceso () {}
-    digitalWrite (giallo1,LOW);
-    digitalWrite (giallo2,LOW);
-    delay (0);
     }
 
 
