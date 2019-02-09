@@ -49,6 +49,9 @@ void loop() {
     }
     richiesta = 1;     //impongo richiesta = 1 cosi  le domande verranno effettuate una sola volta
 
+    if (durataTotale < durataGiallo)
+    {"la durata del giallo è troppo alta";}
+
     int durataRosso = durataTotale - durataGiallo;
     int durataVerde = durataRosso - numlampeggi * lassotempoVerde *2;
     
