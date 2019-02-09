@@ -1,4 +1,4 @@
- //dichiarazione variabili con la quale richiamo i pin
+  //dichiarazione variabili con la quale richiamo i pin
     int rosso1;
     int giallo1;
     int verde1; 
@@ -23,6 +23,8 @@ void setup() {
     rosso2 = 5;
     giallo2 = 6;
     verde2 = 7;
+
+    
     
   
     pinMode (rosso1, OUTPUT);
@@ -55,11 +57,12 @@ void loop() {
     digitalWrite (rosso1,HIGH);
     digitalWrite (verde2,HIGH);
     delay (durataVerde);
-    lampeggiaVerde();
+    lampeggiaVerde2();
     //fase in cui rosso e giallo restano accesi
     rossoEgialloAccesi();
     //fase in cui il verde rimane illuminato con un delay calcolato
     verdeAcceso();
+    
     //giallo rimane accesso per poi ricominciare il ciclo
     gialloAcceso();
   
@@ -73,9 +76,9 @@ void loop() {
    void richiediValori ()
    {
     richiediDurataTotale();
-    richiediDurataGiallo();
-    richiediDurataVerde();
+    richiediDurataGiallo();    
     richiediLampeggiVerde();
+    richiediLassoTempoVerde();
    }
 
   void richiediLampeggiVerde()
@@ -88,7 +91,7 @@ void loop() {
 
   void richiediDurataTotale()
   {
-    Serial.println("Quanto deve durare il semaforo?");
+    Serial.println("Quanto deve durare il semaforo? (input in ms)");
     while (Serial.available() == 0) {};
     String input = Serial.readString();
     durataTotale = input.toInt();
@@ -97,25 +100,26 @@ void loop() {
 
   void richiediDurataGiallo ()
   {
-    Serial.println ("Quanto deve durare il giallo?");
+    Serial.println ("Quanto deve durare il giallo?(input in ms)");
     while (Serial.available() == 0) {};
     String input = Serial.readString();
     durataGiallo = input.toInt();  
   }
-  
-  void richiediDurataVerde ()
+
+
+  void richiediLassoTempoVerde()
   {
-    Serial.println("Quanto lasso di tempo vuoi che ci sia da un lampeggio all'altro?");
+    Serial.println ("Quanto tempo vuoi che ci sia da un lampeggio all'altro?(input in ms)");
     while (Serial.available() == 0) {};
     String input = Serial.readString();
-    lassotempoVerde = input.toInt();
-        
+    lassotempoVerde = input.toInt(); 
   }
+  
 
 
-  void lampeggiaVerde ()
+  void lampeggiaVerde2 ()
   {
-    for (int i = 0; i<= numlampeggi; i++)
+    for (int i = 0; i< numlampeggi; i++)
     {
       digitalWrite (verde2,HIGH);
       delay (lassotempoVerde);
@@ -144,7 +148,7 @@ void loop() {
     delay (durataVerde);
     digitalWrite (verde1,LOW);
     delay (0);                                                //metodo void  VerdeAcceso () {}
-    lampeggiaVerde();
+    lampeggiaVerde1();
     delay (0);
     digitalWrite (rosso2,LOW);
     delay (0);
@@ -162,7 +166,21 @@ void loop() {
     delay (durataGiallo);                                         //metodo void gialloAcceso () {}
     digitalWrite (giallo1,LOW);
     digitalWrite (giallo2,LOW);
+    digitalWrite (rosso2,LOW);
     delay (0);
+    }
+
+
+
+    void lampeggiaVerde1()
+    {
+      for (int i = 0; i< numlampeggi; i++)
+    {
+      digitalWrite (verde1,HIGH);
+      delay (lassotempoVerde);
+      digitalWrite (verde1,LOW);
+      delay (lassotempoVerde);
+    }    
     }
 
 
