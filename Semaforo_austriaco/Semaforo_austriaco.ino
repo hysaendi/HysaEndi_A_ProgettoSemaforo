@@ -49,7 +49,8 @@ void loop() {
     }
     richiesta = 1;     //impongo richiesta = 1 cosi  le domande verranno effettuate una sola volta
 
-    if (durataTotale < durataGiallo)
+    if (durataTotale < durataGiallo)            //condizione per la quale impongo se l'utente inserisce una durata del giallo piu grande della durata del semaforo
+                                                //esso restituisce un "errore"
     {"la durata del giallo è troppo alta";}
 
     int durataRosso = durataTotale - durataGiallo;
