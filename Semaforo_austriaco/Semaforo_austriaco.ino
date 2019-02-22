@@ -56,6 +56,7 @@ void loop() {
     durataGiallo = inputValori ("Quanto deve durare il giallo? (input in ms)", durataGiallo);
     numlampeggi = inputValori ("Quanti lampeggi verde?",numlampeggi);
     lassotempoVerde = inputValori ("Quanto tempo vuoi che ci sia da un lampeggi all'altro? (input in ms)",lassotempoVerde);
+    richiesta = 1; //do la richiesta = 1 cosi le domande dei valori verranno chieste 1 volta
     
     
 
@@ -63,19 +64,15 @@ void loop() {
     digitalWrite (rosso1,HIGH);
     digitalWrite (verde2,HIGH);
     delay (durataVerde);
-    lampeggiaVerde2();
+    lampeggiaVerde(verde2, lassotempoVerde, numlampeggi);
     //fase in cui rosso e giallo restano accesi
     rossoEgialloAccesi();
     //fase in cui il verde rimane illuminato con un delay calcolato
-    verdeAcceso();
-    
+    verdeAcceso();    
     //giallo rimane accesso per poi ricominciare il ciclo
     gialloAcceso();
-  
-
-  
-        
-       
+    
+               
 }
 
   int inputValori (String frase, int variabile) {
@@ -88,17 +85,16 @@ void loop() {
   
 
 
-  void lampeggiaVerde2 ()
+  void lampeggiaVerde (int led, int lassotempoVerde, int numlampeggi) //metodo stretto con la quale in input ricevo i valori
   {
     for (int i = 0; i< numlampeggi; i++)
     {
-      digitalWrite (verde2,HIGH);
+      digitalWrite (led,HIGH);
       delay (lassotempoVerde);
-      digitalWrite (verde2,LOW);
+      digitalWrite (led,LOW);
       delay (lassotempoVerde);
     }    
   }
-
 
     void rossoEgialloAccesi()
     {
@@ -111,7 +107,6 @@ void loop() {
       
     }
 
-
     void verdeAcceso()
     {
     digitalWrite (rosso2,HIGH);
@@ -119,7 +114,7 @@ void loop() {
     delay (durataVerde);
     digitalWrite (verde1,LOW);
     delay (0);                                                //metodo void  VerdeAcceso () {}
-    lampeggiaVerde1();
+    lampeggiaVerde(verde1,lassotempoVerde,numlampeggi);
     delay (0);
     digitalWrite (rosso2,LOW);
     delay (0);
@@ -127,7 +122,6 @@ void loop() {
     delay (0);
       
     }
-
 
     void gialloAcceso()
     {
@@ -145,16 +139,7 @@ void loop() {
 
  
 
-    void lampeggiaVerde1()
-    {
-      for (int i = 0; i< numlampeggi; i++)
-    {
-      digitalWrite (verde1,HIGH);
-      delay (lassotempoVerde);
-      digitalWrite (verde1,LOW);
-      delay (lassotempoVerde);
-    }    
-    }
+   
 
 
 
