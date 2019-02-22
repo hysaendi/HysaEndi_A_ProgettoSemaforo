@@ -43,11 +43,7 @@ void setup() {
    
 void loop() {
   // put your main code here, to run repeatedly:
-    if (richiesta == 0)
-    {
-      richiediValori();
-    }
-    richiesta = 1;     //impongo richiesta = 1 cosi  le domande verranno effettuate una sola volta
+        
 
     if (durataTotale < durataGiallo)            //condizione per la quale impongo se l'utente inserisce una durata del giallo piu grande della durata del semaforo
                                                 //esso restituisce un "errore"
@@ -55,6 +51,12 @@ void loop() {
 
     int durataRosso = durataTotale - durataGiallo;
     int durataVerde = durataRosso - numlampeggi * lassotempoVerde *2;
+
+    durataTotale = inputValori ("Quanti deve durare il rosso? (input in ms)", durataTotale);
+    durataGiallo = inputValori ("Quanto deve durare il giallo? (input in ms)", durataGiallo);
+    numlampeggi = inputValori ("Quanti lampeggi verde?",numlampeggi);
+    lassotempoVerde = inputValori ("Quanto tempo vuoi che ci sia da un lampeggi all'altro? (input in ms)",lassotempoVerde);
+    
     
 
    //inizializzazione semaforo
@@ -76,47 +78,12 @@ void loop() {
        
 }
 
-
-   void richiediValori ()
-   {
-    richiediDurataTotale();
-    richiediDurataGiallo();    
-    richiediLampeggiVerde();
-    richiediLassoTempoVerde();
-   }
-
-  void richiediLampeggiVerde()
-  {
-    Serial.println("Quanti lampeggi verdi?");
+  int inputValori (String frase, int variabile) {
+    Serial.println (frase);
     while (Serial.available() == 0) {};
-    String input = Serial.readString();
-    numlampeggi = input.toInt(); 
-  }
-
-  void richiediDurataTotale()
-  {
-    Serial.println("Quanto deve durare il semaforo? (input in ms)");
-    while (Serial.available() == 0) {};
-    String input = Serial.readString();
-    durataTotale = input.toInt();
-         
-  }
-
-  void richiediDurataGiallo ()
-  {
-    Serial.println ("Quanto deve durare il giallo?(input in ms)");
-    while (Serial.available() == 0) {};
-    String input = Serial.readString();
-    durataGiallo = input.toInt();  
-  }
-
-
-  void richiediLassoTempoVerde()
-  {
-    Serial.println ("Quanto tempo vuoi che ci sia da un lampeggio all'altro?(input in ms)");
-    while (Serial.available() == 0) {};
-    String input = Serial.readString();
-    lassotempoVerde = input.toInt(); 
+    variabile = Serial.readString().toInt();
+    
+    return variabile;
   }
   
 
@@ -175,6 +142,8 @@ void loop() {
     }
 
 
+
+ 
 
     void lampeggiaVerde1()
     {
